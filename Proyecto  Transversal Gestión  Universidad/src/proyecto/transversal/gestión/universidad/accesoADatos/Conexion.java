@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package proyecto.transversal.gestión.universidad.accesoADatos;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,35 +19,31 @@ import javax.swing.JOptionPane;
  * @author usuario
  */
 public class Conexion {
-    
     private static final String URL="jdbc:mariadb://localhost/";
-    private static final String BD="universidad_ulp";
+    private static final String DB="universidadulp";
     private static final String USUARIO="root";
-    private static final String CLAVE="";            
-    private static Connection connection;
+    private static final String PASSWORD="";
+    private static Connection connection; 
     
-    private Conexion (){
-        
-        
-    }
+    private Conexion(){}
+    
     public static Connection getConexion(){
-       
-        if(connection==null){
+        if(connection == null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                 connection = DriverManager.getConnection(URL+BD,USUARIO,CLAVE);
-             System.out.println("Funciona!!!");
+                connection= DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);
+                
+                
+                        
             } catch (ClassNotFoundException ex) {
-               JOptionPane.showMessageDialog(null, "Error al cargar los driver");
-             
-            }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error de conexion " +ex);
-           
+                JOptionPane.showMessageDialog(null,"Error al cargar los driver");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"Error al conectarse a la BD");
+            }
+            
         }
-        
-       
-       
-}
-         return connection;
+        return connection; 
     }
+    
+    
 }
