@@ -5,8 +5,10 @@
  */
 package proyecto.transversal.gestión.universidad;
 
+import Grupo33_universidad_Entidades.newpackage.Materia;
 import java.sql.Connection;
 import proyecto.transversal.gestión.universidad.accesoADatos.Conexion;
+import proyecto.transversal.gestión.universidad.accesoADatos.MateriaData;
 
 /**
  *
@@ -20,6 +22,9 @@ public class ProyectoTransversalGestiónUniversidad {
     public static void main(String[] args) {
         // TODO code application logic here
         Connection con = Conexion.getConexion();
+        Materia fisica = new Materia("fisica", 3, true);
+        MateriaData mat = new MateriaData();
+        mat.guardarMateria(fisica);
     }
     
 }
