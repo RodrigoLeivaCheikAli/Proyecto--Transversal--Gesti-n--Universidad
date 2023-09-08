@@ -17,7 +17,7 @@ public class Alumno {
     public int dni; 
     public String Apellido;
     public String Nombre;
-    public Date FechaNacimiento;
+    public LocalDate FechaNacimiento;
     public boolean estado;
 
     public Alumno() {

@@ -46,34 +46,4 @@ public class Conexion {
     }
     
     
-    private static final String URL="jdbc:mariadb://localhost/";
-    private static final String BD="universidad_ulp";
-    private static final String USUARIO="root";
-    private static final String CLAVE="";            
-    private static Connection connection;
-    
-    private Conexion (){
-        
-        
-    }
-    public static Connection getConexion(){
-       
-        if(connection==null){
-            try {
-                Class.forName("org.mariadb.jdbc.Driver");
-                 connection = DriverManager.getConnection(URL+BD,USUARIO,CLAVE);
-             System.out.println("Funciona!!!");
-            } catch (ClassNotFoundException ex) {
-               JOptionPane.showMessageDialog(null, "Error al cargar los driver");
-             
-            }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error de conexion " +ex);
-           
-        }
-        
-       
-       
-}
-         return connection;
-    }
 }
