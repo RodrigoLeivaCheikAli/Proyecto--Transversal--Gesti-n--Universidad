@@ -5,6 +5,9 @@
  */
 package proyecto.transversal.gestión.universidad;
 
+import java.sql.Connection;
+import proyecto.transversal.gestión.universidad.accesoADatos.Conexion;
+
 /**
  *
  * @author User
@@ -16,6 +19,7 @@ public class ProyectoTransversalGestiónUniversidad {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Connection con = Conexion.getConexion();
     }
     
 }
