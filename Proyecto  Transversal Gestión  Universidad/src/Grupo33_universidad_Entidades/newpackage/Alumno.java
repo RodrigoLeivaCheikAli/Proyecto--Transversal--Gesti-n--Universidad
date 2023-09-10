@@ -13,39 +13,39 @@ import java.sql.Date;
  */
 public class Alumno {
     
-    public int IDAlumno;
+    public int id_alumno;
     public int dni; 
-    public String Apellido;
-    public String Nombre;
-    public Date FechaNacimiento;
+    public String apellido;
+    public String nombre;
+    public Date fecha_nacimiento;
     public boolean estado;
 
     public Alumno() {
     }
-
-    public Alumno(int dni, String Apellido, String Nombre, Date FechaNacimiento, boolean estado) {
+    
+    public Alumno(int dni, String apellido, String nombre, Date fecha_nacimiento, boolean estado) {
         this.dni = dni;
-        this.Apellido = Apellido;
-        this.Nombre = Nombre;
-        this.FechaNacimiento = FechaNacimiento;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public Alumno(int IDAlumno, int dni, String Apellido, String Nombre, Date FechaNacimiento, boolean estado) {
-        this.IDAlumno = IDAlumno;
+    public Alumno(int id_alumno, int dni, String apellido, String nombre, Date fecha_nacimiento, boolean estado) {
+        this.id_alumno = id_alumno;
         this.dni = dni;
-        this.Apellido = Apellido;
-        this.Nombre = Nombre;
-        this.FechaNacimiento = FechaNacimiento;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fecha_nacimiento = fecha_nacimiento;
         this.estado = estado;
     }
 
-    public int getIDAlumno() {
-        return IDAlumno;
+    public int getId_alumno() {
+        return id_alumno;
     }
 
-    public void setIDAlumno(int IDAlumno) {
-        this.IDAlumno = IDAlumno;
+    public void setId_alumno(int id_alumno) {
+        this.id_alumno = id_alumno;
     }
 
     public int getDni() {
@@ -57,27 +57,27 @@ public class Alumno {
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Date getFechaNacimiento() {
-        return FechaNacimiento;
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(Date FechaNacimiento) {
-        this.FechaNacimiento = FechaNacimiento;
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public boolean isEstado() {
@@ -90,10 +90,13 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno{" + "IDAlumno=" + IDAlumno + ", dni=" + dni + ", Apellido=" + Apellido + ", Nombre=" + Nombre + ", FechaNacimiento=" + FechaNacimiento + ", estado=" + estado + '}';
+        return "Alumno{" + "id_alumno=" + id_alumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fecha_Nacimiento=" + fecha_nacimiento + ", estado=" + estado + '}';
     }
     
+    
 
+    
+    
 }
 
 
