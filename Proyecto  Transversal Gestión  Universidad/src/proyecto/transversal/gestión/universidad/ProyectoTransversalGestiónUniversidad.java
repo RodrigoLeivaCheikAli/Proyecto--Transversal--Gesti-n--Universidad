@@ -36,16 +36,22 @@ public class ProyectoTransversalGestiónUniversidad {
     //un error de sintaxis, porque en AlumnoData en el id se pusoo = ?
     //y segun lo que dice el programa, deberia decir =5 
            
-    AlumnoData alu = new AlumnoData();
-    for(Alumno alumno:alu.listarAlumnos()){
-        
-        System.out.println(alumno.getDni());
-        System.out.println(alumno.getApellido());
-        System.out.println(alumno.getNombre());
-        System.out.println(alumno.getFecha_nacimiento());
-        
-      }
+//    AlumnoData alu = new AlumnoData();
+//    for(Alumno alumno:alu.listarAlumnos()){
+//        
+//        System.out.println(alumno.getDni());
+//        System.out.println(alumno.getApellido());
+//        System.out.println(alumno.getNombre());
+//        System.out.println(alumno.getFecha_nacimiento());
+//        
+//      }
     //Pasa lo mismo aca 
+    
+    
+//    Mteria ma = new Materia(2,"Matematica", 1, true);
+//    MateriaData Mdat = new MateriaData();
+////    Mdat.guardarMateria(ma);
+//      Mdat.buscarMateria(2);a
     
 
     }

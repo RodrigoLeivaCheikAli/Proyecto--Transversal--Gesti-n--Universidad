@@ -47,6 +47,74 @@ public void guardarMateria(Materia materia) {
             JOptionPane.showMessageDialog(null, "Error al guardar");
         }
     }
+public void modificarMateria(Materia materia){
+    
+    String sql = "UPDATE materia SET Nombre = ?, Año=?, Estado=? WHERE IDMateria = ?";
+    PreparedStatement ps = null;
+    
+    try {
+         ps = con.prepareStatement(sql);
+         ps.setString(1, materia.getNombre());
+        ps.setInt(2, materia.getAnioMateria());
+         ps.setBoolean(3, materia.isActivo());
+         ps.setInt(4, materia.getIdMateria());
+        int exito = ps.executeUpdate();
 
+     if (exito == 1) {
+         JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+         } else {
+         JOptionPane.showMessageDialog(null, "La Materia no existe");
+        }
+     } catch (SQLException ex) {
+     JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia "+ex.getMessage());
+    }
+
+ 
+    
+}
+
+public void eliminarAlumno(int id) {
+
+     try {
+         String sql = "UPDATE materia SET Estado = 0 WHERE IDMateria = ? ";
+         PreparedStatement ps = con.prepareStatement(sql);
+          ps.setInt(1, id);
+         int fila=ps.executeUpdate();
+
+         if(fila==1){
+             JOptionPane.showMessageDialog(null, " Se eliminó la materia.");
+     }
+     ps.close();
+     } catch (SQLException e) {
+     JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Materia");
+     }
+ }
+
+public Materia buscarMateria(int id) {
+ Materia materia = null;
+ String sql = "SELECT Nombre,Año, Estado  FROM materia WHERE IDMateria = ? AND Estado = 1";
+ PreparedStatement ps = null;
+ try {
+ ps = con.prepareStatement(sql);
+ ps.setInt(1,id );
+ ResultSet rs = ps.executeQuery();
+
+ if (rs.next()) {
+ materia=new Materia();
+materia.setIdMateria(id);
+ materia.setNombre(rs.getString("nombre"));
+ materia.setAnioMateria(rs.getInt("Año"));
+ materia.setActivo(true);
+ } else {
+     JOptionPane.showMessageDialog(null, "No existe la materia");
+
+     ps.close();}
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia "+ex.getMessage()); 
+
+}
+
+ return materia;
+}
 }
 
