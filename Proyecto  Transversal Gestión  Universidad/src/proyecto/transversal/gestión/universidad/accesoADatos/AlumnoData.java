@@ -125,8 +125,8 @@ public class AlumnoData {
       
       public Alumno buscarAlumnoPorDni(int dni){
             
-            String sql="SELECT id_alumno,dni,apellido,nombre,fecha_nacimiento FROM alumno"
-                    + "WHERE dni=? AND estado=1";
+            String sql="SELECT id_alumno,dni,apellido,nombre,fecha_nacimiento FROM alumno WHERE dni=? AND estado=1";
+                    
             Alumno alumno=null; 
         try {
             PreparedStatement ps= con.prepareStatement(sql);
@@ -143,7 +143,7 @@ public class AlumnoData {
                                     
              }else { 
                 
-                JOptionPane.showMessageDialog(null,"No existe ese alumno ");               
+                JOptionPane.showMessageDialog(null,"No existe ese alumno");               
             }             
              ps.close();
                                                    
@@ -151,14 +151,12 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
         
-        return alumno; 
-            
+        return alumno;             
     }
       
          public List<Alumno> listarAlumnos(){
             
-            String sql="SELECT id_alumno,dni,apellido,nombre,fecha_nacimiento FROM alumno"
-                    + "WHERE estado=1";
+            String sql="SELECT id_alumno,dni,apellido,nombre,fecha_nacimiento FROM alumno WHERE estado = 1";
             ArrayList<Alumno> alumnos= new ArrayList<>();
             
         try {

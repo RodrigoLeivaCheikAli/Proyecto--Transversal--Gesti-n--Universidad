@@ -10,27 +10,27 @@ package Grupo33_universidad_Entidades.newpackage;
  * @author User
  */
 public class Inscripcion {
-     int idInscripto;
+     int id_inscripto;
  int nota;
- int idAlumno;
- int idMateria;
+ int id_alumno;
+ int id_materia;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripto, int nota, int idAlumno, int idMateria) {
-        this.idInscripto = idInscripto;
+    public Inscripcion(int id_inscripto, int nota, int id_alumno, int id_materia) {
+        this.id_inscripto = id_inscripto;
         this.nota = nota;
-        this.idAlumno = idAlumno;
-        this.idMateria = idMateria;
+        this.id_alumno = id_alumno;
+        this.id_materia = id_materia;
     }
 
-    public int getIdInscripto() {
-        return idInscripto;
+    public int getId_inscripto() {
+        return id_inscripto;
     }
 
-    public void setIdInscripto(int idInscripto) {
-        this.idInscripto = idInscripto;
+    public void setId_inscripto(int id_inscripto) {
+        this.id_inscripto = id_inscripto;
     }
 
     public int getNota() {
@@ -41,25 +41,25 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public int getIdAlumno() {
-        return idAlumno;
+    public int getId_alumno() {
+        return id_alumno;
     }
 
-    public void setIdAlumno(int idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setId_alumno(int id_alumno) {
+        this.id_alumno = id_alumno;
     }
 
-    public int getIdMateria() {
-        return idMateria;
+    public int getId_materia() {
+        return id_materia;
     }
 
-    public void setIdMateria(int idMateria) {
-        this.idMateria = idMateria;
+    public void setId_materia(int id_materia) {
+        this.id_materia = id_materia;
     }
 
     @Override
     public String toString() {
-        return "Inscripcion{" + "idInscripto=" + idInscripto + ", nota=" + nota + ", idAlumno=" + idAlumno + ", idMateria=" + idMateria + '}';
+        return "Inscripcion{" + "idInscripto=" + id_inscripto + ", nota=" + nota + ", idAlumno=" + id_alumno + ", idMateria=" + id_materia + '}';
     }
  
 }

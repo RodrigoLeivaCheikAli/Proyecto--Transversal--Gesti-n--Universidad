@@ -20,11 +20,11 @@ public class ProyectoTransversalGestiónUniversidad {
 
 //        Connection con = Conexion.getConexion();
 
-     //Alumno juan = new Alumno(6,12312345,"Luna","Juan Pedro", Date.valueOf("1999-08-10"),true);
+//     Alumno juan = new Alumno(6,12312345,"Luna","Juan Pedro", Date.valueOf("1999-08-10"),true);
 //     AlumnoData alu = new AlumnoData(); 
-     //alu.guardarAlumno(juan); 
-     //alu.modificarAlumno(juan); 
-     //alu.eliminarAlumno(6);
+//     alu.guardarAlumno(juan); 
+//     alu.modificarAlumno(juan); 
+//     alu.eliminarAlumno(6);
      
 //     Alumno alumnoEncontrado= alu.buscarAlumnoPorDni(34521234);
 //     if(alumnoEncontrado!=null){
@@ -32,10 +32,12 @@ public class ProyectoTransversalGestiónUniversidad {
 //        System.out.println("apellido "+ alumnoEncontrado.getApellido());
 //        
 //     }
+
     //Verificar con un mentor, al correr con esta secuencia dice que hay
     //un error de sintaxis, porque en AlumnoData en el id se pusoo = ?
     //y segun lo que dice el programa, deberia decir =5 
            
+
 //    AlumnoData alu = new AlumnoData();
 //    for(Alumno alumno:alu.listarAlumnos()){
 //        
