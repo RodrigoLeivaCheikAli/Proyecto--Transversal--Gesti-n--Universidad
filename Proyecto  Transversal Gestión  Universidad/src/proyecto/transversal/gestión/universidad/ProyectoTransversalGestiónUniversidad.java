@@ -18,14 +18,14 @@ public class ProyectoTransversalGestiónUniversidad {
 
     public static void main(String[] args) {
 
-//        Connection con = Conexion.getConexion();
+        Connection con = Conexion.getConexion();
 
-//     Alumno juan = new Alumno(6,12312345,"Luna","Juan Pedro", Date.valueOf("1999-08-10"),true);
+//     Alumno juan = new Alumno(7,634532345,"Leiva","Rodrigo", Date.valueOf("1999-08-10"),true);
 //     AlumnoData alu = new AlumnoData(); 
 //     alu.guardarAlumno(juan); 
 //     alu.modificarAlumno(juan); 
 //     alu.eliminarAlumno(6);
-     
+//     
 //     Alumno alumnoEncontrado= alu.buscarAlumnoPorDni(34521234);
 //     if(alumnoEncontrado!=null){
 //        System.out.println("dni "+ alumnoEncontrado.getDni());
@@ -50,11 +50,18 @@ public class ProyectoTransversalGestiónUniversidad {
     //Pasa lo mismo aca 
     
     
-//    Mteria ma = new Materia(2,"Matematica", 1, true);
-//    MateriaData Mdat = new MateriaData();
-////    Mdat.guardarMateria(ma);
-//      Mdat.buscarMateria(2);a
+    //Materia ma = new Materia(2,"Matematica", 1, true);
+    MateriaData Mdat = new MateriaData();
     
+      
+   for(Materia materias:Mdat.listarMateria()){
+        
+        System.out.println(materias.getNombre());
+        System.out.println(materias.getAnioMateria());
+     
+        
+        
+      }
 
     }
     
