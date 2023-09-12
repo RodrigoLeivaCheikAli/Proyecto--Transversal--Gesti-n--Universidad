@@ -50,9 +50,15 @@ public class ProyectoTransversalGestiónUniversidad {
     //Pasa lo mismo aca 
     
     
-    //Materia ma = new Materia(2,"Matematica", 1, true);
+    Materia ma = new Materia(3,"Tecnologia", 1, true);
     MateriaData Mdat = new MateriaData();
-    
+//    Mdat.guardarMateria(ma);
+//   Materia materiaEncontrado= Mdat.buscarMateria(3);
+//     if(materiaEncontrado!=null){
+//        System.out.println("Nombre: "+ materiaEncontrado.getNombre());
+//        System.out.println("Año: "+ materiaEncontrado.getAnioMateria());
+//        
+//     }
       
    for(Materia materias:Mdat.listarMateria()){
         

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author usuario
  */
 public class Conexion {
-    private static final String URL="jdbc:mariadb://localhost/";
+    private static final String URL="jdbc:mariadb://127.0.0.1/";
     private static final String DB="universidad_ulp";
     private static final String USUARIO="root";
     private static final String PASSWORD="";
