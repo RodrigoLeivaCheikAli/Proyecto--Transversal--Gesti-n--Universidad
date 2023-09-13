@@ -4,9 +4,7 @@ package proyecto.transversal.gestión.universidad;
 
 import Grupo33_universidad_Entidades.newpackage.*;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.time.LocalDate;
+import java.sql.*;
 import proyecto.transversal.gestión.universidad.accesoADatos.*;
 
 public class ProyectoTransversalGestiónUniversidad {
@@ -59,21 +57,33 @@ public class ProyectoTransversalGestiónUniversidad {
     AlumnoData ad= new AlumnoData();
     MateriaData md= new MateriaData();
     IncripcionData id= new IncripcionData(); 
-//    
-//    Alumno ricardo =ad.buscarAlumno(5); 
-//    Materia mate= md.buscarMateria(1);
+    
+//    Alumno ricardo =ad.buscarAlumno(1); 
+//    Materia mate= md.buscarMateria(2);
 //    Inscripcion insc=new Inscripcion(9,ricardo,mate);     
 //     id.guardarInscripcion(insc); 
      //id.actualiarNota(5,1,7);
      //id.borrarInscripcionMateriaAlumno(5,1);
 //        System.out.println(id.obtenerInscripciones().size()); 
         
-     for(Inscripcion inscripciones:id.obtenerInscripciones()){
-         
-      System.out.println("id: "+ inscripciones.getId_inscripto());
-      System.out.println("Apellido: "+ inscripciones.getAlumno().getApellido());
-      System.out.println("Materia: "+inscripciones.getMateria().getNombre());     
+//     for(Inscripcion inscripciones:id.obtenerInscripciones()){
+//         
+//      System.out.println("id: "+ inscripciones.getId_inscripto());
+//      System.out.println("Apellido: "+ inscripciones.getAlumno().getApellido());
+//      System.out.println("Materia: "+inscripciones.getMateria().getNombre());     
+//
+//     }
 
+     for(Materia materia:id.obtenerMateriasNOCursadas(5)){        
+         System.out.println("Nombre: "+materia.getNombre());        
      }
 
+       for(Inscripcion insc:id.obtenerInscripcionesPorAlumno(1)){
+           System.out.println("Materia: "+insc.getMateria());
+       }
+       
+       for(Materia mater:id.obtenerMateriasCursadas(5)){
+           System.out.println("Materia: "+mater.getIdMateria());
+       }
+       
   }}  
