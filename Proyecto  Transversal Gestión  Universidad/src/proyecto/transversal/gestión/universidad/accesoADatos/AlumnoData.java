@@ -25,8 +25,7 @@ public class AlumnoData {
     }
     
     public void guardarAlumno(Alumno alumno){
-        String sql="INSERT INTO alumno(dni,apellido,nombre,fecha_nacimiento,estado)"
-                + "VALUES(?,?,?,?,?)";
+        String sql="INSERT INTO alumno(dni,apellido,nombre,fecha_nacimiento,estado) VALUES(?,?,?,?,?)";
         
         try {
             PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -95,8 +94,7 @@ public class AlumnoData {
       }
       public Alumno buscarAlumno(int id){
             
-            String sql="SELECT dni,apellido,nombre,fecha_nacimiento FROM alumno"
-                    + "WHERE id_alumno=? AND estado=1";
+            String sql="SELECT dni,apellido,nombre,fecha_nacimiento FROM alumno WHERE id_alumno=? AND estado=1";
             Alumno alumno=null; 
         try {
             PreparedStatement ps= con.prepareStatement(sql);
