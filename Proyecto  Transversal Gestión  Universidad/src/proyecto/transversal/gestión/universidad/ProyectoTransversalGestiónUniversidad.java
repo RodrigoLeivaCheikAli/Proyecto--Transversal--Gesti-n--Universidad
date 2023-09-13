@@ -59,10 +59,20 @@ public class ProyectoTransversalGestiónUniversidad {
     AlumnoData ad= new AlumnoData();
     MateriaData md= new MateriaData();
     IncripcionData id= new IncripcionData(); 
-    
-    Alumno ricardo =ad.buscarAlumno(5); 
-    Materia mate= md.buscarMateria(1);
-    Inscripcion insc=new Inscripcion(9,ricardo,mate);     
-    id.guardarInscripcion(insc); 
+//    
+//    Alumno ricardo =ad.buscarAlumno(5); 
+//    Materia mate= md.buscarMateria(1);
+//    Inscripcion insc=new Inscripcion(9,ricardo,mate);     
+     //id.guardarInscripcion(insc); 
+     //id.actualiarNota(5,1,7);
+     //id.borrarInscripcionMateriaAlumno(5,1);
+     
+     for(Inscripcion inscripciones:id.obtenerInscripciones()){
+         
+         System.out.println("id: "+ inscripciones.getId_inscripto());
+         System.out.println("Apellido: "+ inscripciones.getAlumno().getApellido());
+         System.out.println("Materia: "+inscripciones.getMateria().getNombre());
+         
+     }
 
   }}  
