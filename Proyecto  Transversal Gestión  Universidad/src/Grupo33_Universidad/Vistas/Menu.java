@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Grupo33_Universidad.Vistas;
 
-/**
- *
- * @author User
- */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
     public Menu() {
         initComponents();
     }
@@ -78,6 +67,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu6.setText("Administracion");
 
         jMenuItem5.setText("Manejo de Inscripciones");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem5);
 
         jMenuItem6.setText("Manipulacion de Notas");
@@ -120,6 +114,17 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(nombre);
          jDesktopPane1.moveToFront(nombre);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+         jDesktopPane1.removeAll();
+         jDesktopPane1.repaint();
+         FormularioInscripcion0 insc=new FormularioInscripcion0();      
+         insc.setVisible(true);
+         jDesktopPane1.add(insc);
+         jDesktopPane1.moveToFront(insc);
+          
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
