@@ -204,6 +204,8 @@ private Connection con= null;
         // TODO add your handling code here:
        
         alum.buscarAlumnoPorDni(parseInt(txtDocumento.getText()));
+        
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
