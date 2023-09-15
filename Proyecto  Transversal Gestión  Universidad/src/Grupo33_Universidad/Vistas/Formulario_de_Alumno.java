@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import proyecto.transversal.gestión.universidad.accesoADatos.Conexion;
 import proyecto.transversal.gestión.universidad.accesoADatos.AlumnoData;
 /**
@@ -204,7 +205,16 @@ private Connection con= null;
         // TODO add your handling code here:
        
         alum.buscarAlumnoPorDni(parseInt(txtDocumento.getText()));
-        
+         Alumno alumnoEncontrado= alum.buscarAlumnoPorDni(34521234);
+     if(alumnoEncontrado!=null){
+       JOptionPane.showMessageDialog(
+    null,
+    "IdAlumno: " + alumnoEncontrado.getId_alumno() + "\n" +
+    "DNI: " + alumnoEncontrado.getDni() + "\n" +
+    "Apellido: " + alumnoEncontrado.getApellido() + "\n" +
+    "Nombre: " + alumnoEncontrado.getNombre()
+);  
+     }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -220,6 +230,10 @@ private Connection con= null;
        
        Alumno  alumno = new Alumno(dni, nombre, apellido, fechNac, true);
         alum.guardarAlumno(alumno);
+        txtNombre.setText("");
+        txtDocumento.setText("");
+        txtApellido.setText("");
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
