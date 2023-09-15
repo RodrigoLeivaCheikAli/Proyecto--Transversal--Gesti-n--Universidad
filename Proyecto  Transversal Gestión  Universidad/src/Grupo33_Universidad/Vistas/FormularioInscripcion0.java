@@ -11,12 +11,13 @@ import java.sql.Date;
  * @author usuario
  */
 public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
-
+   Alumno alumno1 = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate()); 
     /**
      * Creates new form FormularioInscripcion0
      */
     public FormularioInscripcion0() {
         initComponents();
+        
         cargarCombo();
     }
 
@@ -163,17 +164,19 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAnular;
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<Alumno> jcAlumnos;
+    private javax.swing.JComboBox<String> jcAlumnos;
     // End of variables declaration//GEN-END:variables
  
-    private void cargarCombo(){
+ 
+    private void cargarCombo(){ 
         
-        jcAlumnos.addItem(new Alumno(1,23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true));
-        jcAlumnos.addItem(new Alumno(4,12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
-        jcAlumnos.addItem(new Alumno(5,34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
-        jcAlumnos.addItem(new Alumno(6,12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
-        jcAlumnos.addItem(new Alumno(8,12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true));
-             
+        jcAlumnos.addItem(String.valueOf(alumno1.getDni())+alumno1.getApellido()+alumno1.getNombre());
+//        jcAlumnos.addItem(new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
+//        jcAlumnos.addItem(new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
+//        jcAlumnos.addItem(new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
+//        jcAlumnos.addItem(new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true));
+//        
+        
         
     }
    
