@@ -212,7 +212,7 @@ public class IncripcionData {
                     alumno.setDni(rs.getInt("dni"));
                     alumno.setApellido(rs.getString("apellido"));
                     alumno.setNombre(rs.getString("nombre"));
-                    alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                    alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                     alumno.setEstado(rs.getBoolean("estado"));
                     alumnosMateria.add(alumno);
                 }

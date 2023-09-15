@@ -32,7 +32,7 @@ public class AlumnoData {
             ps.setInt(1,alumno.getDni());
             ps.setString(2,alumno.getApellido());
             ps.setString(3,alumno.getNombre());
-            ps.setDate(4, alumno.getFecha_nacimiento());
+            ps.setDate(4, Date.valueOf(alumno.getFecha_nacimiento()));
             ps.setBoolean(5, alumno.isEstado());
             ps.executeUpdate();
             
@@ -59,7 +59,7 @@ public class AlumnoData {
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, alumno.getFecha_nacimiento());
+            ps.setDate(4, Date.valueOf(alumno.getFecha_nacimiento()) );
             ps.setInt(5, alumno.getId_alumno()); 
             int exito= ps.executeUpdate();
             
@@ -106,9 +106,9 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre")); 
-                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 alumno.setEstado(true); 
-                                    
+                          JOptionPane.showMessageDialog(null,"se encontro");          
              }else {                 
                 JOptionPane.showMessageDialog(null,"No existe ese alumno");                
             }             
@@ -136,7 +136,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre")); 
-                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 alumno.setEstado(true); 
                                     
              }else { 
@@ -168,7 +168,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre")); 
-                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+                alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 alumno.setEstado(true); 
                 
                 alumnos.add(alumno); 

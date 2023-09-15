@@ -6,6 +6,7 @@
 package Grupo33_universidad_Entidades.newpackage;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,13 +18,13 @@ public class Alumno {
     public int dni; 
     public String apellido;
     public String nombre;
-    public Date fecha_nacimiento;
+    public LocalDate fecha_nacimiento;
     public boolean estado;
 
     public Alumno() {
     }
     
-    public Alumno(int dni, String apellido, String nombre, Date fecha_nacimiento, boolean estado) {
+    public Alumno(int dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -31,7 +32,7 @@ public class Alumno {
         this.estado = estado;
     }
 
-    public Alumno(int id_alumno, int dni, String apellido, String nombre, Date fecha_nacimiento, boolean estado) {
+    public Alumno(int id_alumno, int dni, String apellido, String nombre, LocalDate fecha_nacimiento, boolean estado) {
         this.id_alumno = id_alumno;
         this.dni = dni;
         this.apellido = apellido;
@@ -72,11 +73,11 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
