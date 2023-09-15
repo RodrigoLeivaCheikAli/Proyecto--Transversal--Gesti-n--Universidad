@@ -78,6 +78,11 @@ private Connection con= null;
         });
 
         btnEliminar.setLabel("Elimnar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setLabel("Nuevo");
         btnNuevo.setName(""); // NOI18N
@@ -204,8 +209,8 @@ private Connection con= null;
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
        
-        alum.buscarAlumnoPorDni(parseInt(txtDocumento.getText()));
-         Alumno alumnoEncontrado= alum.buscarAlumnoPorDni(34521234);
+        
+         Alumno alumnoEncontrado= alum.buscarAlumnoPorDni(parseInt(txtDocumento.getText()));
      if(alumnoEncontrado!=null){
        JOptionPane.showMessageDialog(
     null,
@@ -243,6 +248,11 @@ private Connection con= null;
     txtNombre.enable(true);
     fechaNacimiento.enable(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+       // JOptionPane.
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
