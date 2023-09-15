@@ -9,7 +9,9 @@ import Grupo33_universidad_Entidades.newpackage.Alumno;
 import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import proyecto.transversal.gestión.universidad.accesoADatos.Conexion;
 import proyecto.transversal.gestión.universidad.accesoADatos.AlumnoData;
 /**
@@ -210,8 +212,11 @@ private Connection con= null;
          int dni = Integer.parseInt(txtDocumento.getText());
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
-        LocalDate fecha = LocalDate.parse(fechaNacimiento.getDate().toString()) ;
-       Alumno  alumno = new Alumno(dni, nombre, apellido, fecha, true);
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha = formatoFecha.format(fechaNacimiento.getDate());
+        LocalDate fechNac = LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+       
+       Alumno  alumno = new Alumno(dni, nombre, apellido, fechNac, true);
         alum.guardarAlumno(alumno);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
