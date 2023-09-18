@@ -9,7 +9,7 @@ package Grupo33_universidad_Entidades.newpackage;
  *
  * @author User
  */
-public class Inscripcion {
+public class Inscripcion{
  private int id_inscripto;
  private double nota;
  private Alumno alumno; 
@@ -75,6 +75,8 @@ public class Inscripcion {
     public String toString() {
         return "Inscripcion{" + "idInscripto=" + id_inscripto + ", nota=" + nota + ", idAlumno=" + alumno + ", idMateria=" + materia + '}';
     }
+
+    
  
 }
 

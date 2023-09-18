@@ -6,37 +6,33 @@
 package Grupo33_Universidad.Vistas;
 import Grupo33_universidad_Entidades.newpackage.*;
 import java.sql.Date;
+import java.util.TreeSet;
+import javax.swing.table.DefaultTableModel;
+import proyecto.transversal.gestión.universidad.accesoADatos.IncripcionData;
 /**
  *
  * @author usuario
  */
 public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
-
-
- Alumno alum1 = new Alumno(1,23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true);
-
    Alumno alumno1 = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true); 
+   Alumno alumno2 = new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true); 
+   Alumno alumno3 = new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true); 
+   Alumno alumno4 = new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false);
+   Alumno alumno5 = new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true);   
 
-
-   Alumno alumno = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true); 
-   Alumno alumno2= new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true); 
-   Alumno alumno3= new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true); 
-   Alumno alumno4= new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false);
-   Alumno alumno5= new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true);
+   Inscripcion insc=new Inscripcion();
    
+   private DefaultTableModel modelo= new DefaultTableModel(); 
+   public static TreeSet<Materia> obtenerMaterias = new TreeSet<>(); 
    
-
     /**
      * Creates new form FormularioInscripcion0
      */
     public FormularioInscripcion0() {
         initComponents();
-
-       
-
-        
-
         cargarCombo();
+        armarCabecera(); 
+        cargarMaterias();
     }
 
     /**
@@ -55,7 +51,7 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaAl = new javax.swing.JTable();
         jbInscribir = new javax.swing.JButton();
         jbAnular = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
@@ -69,14 +65,25 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un Alumno: ");
 
+        jcAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcAlumnosActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Listado de Materias");
 
         jRadioButton1.setText("Materias Inscriptas");
 
         jRadioButton2.setText("Materias NO inscriptas");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaAl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -87,9 +94,14 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaAl);
 
         jbInscribir.setText("Inscribir");
+        jbInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbInscribirActionPerformed(evt);
+            }
+        });
 
         jbAnular.setText("Anular Inscripcion");
         jbAnular.addActionListener(new java.awt.event.ActionListener() {
@@ -170,15 +182,37 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbAnularActionPerformed
 
+    private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
+        // TODO add your handling code here:
+      String alumnos= jcAlumnos.getActionCommand(); 
+      String alum= TablaAl.getName();
+//      int filas= jcAlumnos.getSelectedRow();
+      
+      IncripcionData id= new IncripcionData(); 
+      id.guardarInscripcion(insc); 
+      
+      
+    }//GEN-LAST:event_jbInscribirActionPerformed
+
+    private void jcAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAlumnosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jcAlumnosActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+       //LLamar al metodo InscripcionData 
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaAl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbAnular;
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
@@ -187,13 +221,40 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
  
     private void cargarCombo(){ 
+<<<<<<< Updated upstream
         jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+" ,"+alumno1.getApellido()+" ,"+alumno1.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+" ,"+alumno2.getApellido()+" ,"+alumno2.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+" ,"+alumno3.getApellido()+" ,"+alumno3.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+" ,"+alumno4.getApellido()+" ,"+alumno4.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+" ,"+alumno5.getApellido()+" ,"+alumno5.getNombre());        
+=======
+      
+        jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+", "+alumno1.getApellido()+", "+alumno1.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+", "+alumno2.getApellido()+", "+alumno2.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+", "+alumno3.getApellido()+", "+alumno3.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+", "+alumno4.getApellido()+", "+alumno4.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+", "+alumno5.getApellido()+", "+alumno5.getNombre());        
+>>>>>>> Stashed changes
 
     }
    
 
+    private void armarCabecera(){
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Año");
+        TablaAl.setModel(modelo);
+        
+    }
+            
+    private void cargarMaterias(){
+        obtenerMaterias.add(new Materia(1,"Analisis Matematico",1,true));
+        obtenerMaterias.add(new Materia(2,"Quiica Inorganica",1,true));
+        obtenerMaterias.add(new Materia(3,"Fisica 1",2,true));
+        obtenerMaterias.add(new Materia(4,"Bioestadistica",2,true));
+        obtenerMaterias.add(new Materia(5,"Matematica",1,true));
+        obtenerMaterias.add(new Materia(6,"Calculo",3,true));
+       
+        
+    }
 }

@@ -9,7 +9,7 @@ package Grupo33_universidad_Entidades.newpackage;
  *
  * @author usuario
  */
-public class Materia {
+public class Materia implements Comparable<Materia> {
     private int idMateria;
     private String nombre;
     private int anioMateria;
@@ -67,6 +67,18 @@ public class Materia {
         return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anioMateria=" + anioMateria + '}';
     }
 
+    @Override
+    public int compareTo(Materia t) {
+        if(idMateria==t.idMateria){
+            return 0; 
+        } else if(idMateria>t.idMateria){
+            return 1;
+        }else{
+            return -1; 
+        }
+    }
+    }
+
     
     
-} 
+
