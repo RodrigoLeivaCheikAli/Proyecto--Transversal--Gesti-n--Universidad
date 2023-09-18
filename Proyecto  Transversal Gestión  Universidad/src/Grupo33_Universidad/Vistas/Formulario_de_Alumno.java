@@ -254,7 +254,7 @@ private Connection con= null;
     JTextField txtEliminar = new JTextField();
         // TODO add your handling code here:
     int option = JOptionPane.showConfirmDialog(null, txtEliminar, "Ingrese un valor", JOptionPane.OK_CANCEL_OPTION);
-    alum.eliminarAlumno(parseInt(txtEliminar.getText()));
+    alum.eliminarAlumno(parseInt(txtEliminar.getText())); 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
