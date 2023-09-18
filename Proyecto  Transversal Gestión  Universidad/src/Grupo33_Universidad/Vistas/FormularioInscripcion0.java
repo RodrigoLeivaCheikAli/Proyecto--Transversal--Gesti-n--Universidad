@@ -21,6 +21,7 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
    Alumno alumno5 = new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true);   
 
    Inscripcion insc=new Inscripcion();
+   IncripcionData id= new IncripcionData(); 
    
    private DefaultTableModel modelo= new DefaultTableModel(); 
    public static TreeSet<Materia> obtenerMaterias = new TreeSet<>(); 
@@ -111,6 +112,11 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,6 +210,11 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
        //LLamar al metodo InscripcionData 
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+         dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaAl;
@@ -221,20 +232,13 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
  
     private void cargarCombo(){ 
-<<<<<<< Updated upstream
+
         jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+" ,"+alumno1.getApellido()+" ,"+alumno1.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+" ,"+alumno2.getApellido()+" ,"+alumno2.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+" ,"+alumno3.getApellido()+" ,"+alumno3.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+" ,"+alumno4.getApellido()+" ,"+alumno4.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+" ,"+alumno5.getApellido()+" ,"+alumno5.getNombre());        
-=======
-      
-        jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+", "+alumno1.getApellido()+", "+alumno1.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+", "+alumno2.getApellido()+", "+alumno2.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+", "+alumno3.getApellido()+", "+alumno3.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+", "+alumno4.getApellido()+", "+alumno4.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+", "+alumno5.getApellido()+", "+alumno5.getNombre());        
->>>>>>> Stashed changes
+
 
     }
    
@@ -255,6 +259,7 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         obtenerMaterias.add(new Materia(5,"Matematica",1,true));
         obtenerMaterias.add(new Materia(6,"Calculo",3,true));
        
+      
         
     }
 }
