@@ -187,25 +187,6 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
  
     private void cargarCombo(){ 
-        
-
-        jcAlumnos.addItem(String.valueOf(alumno1.getDni())+alumno1.getApellido()+alumno1.getNombre());
-//        jcAlumnos.addItem(new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
-//        jcAlumnos.addItem(new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true));
-//        
-        
-
-//        jcAlumnos.addItem(alum1);
-//        jcAlumnos.addItem(new Alumno(4,12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(5,34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(6,12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
-//        jcAlumnos.addItem(new Alumno(8,12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true));
-             
-
-        
-
         jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+" ,"+alumno1.getApellido()+" ,"+alumno1.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+" ,"+alumno2.getApellido()+" ,"+alumno2.getNombre());
         jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+" ,"+alumno3.getApellido()+" ,"+alumno3.getNombre());
