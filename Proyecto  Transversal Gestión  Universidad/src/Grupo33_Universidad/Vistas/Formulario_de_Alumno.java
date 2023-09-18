@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import proyecto.transversal.gestión.universidad.accesoADatos.Conexion;
 import proyecto.transversal.gestión.universidad.accesoADatos.AlumnoData;
 /**
@@ -250,8 +251,10 @@ private Connection con= null;
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    JTextField txtEliminar = new JTextField();
         // TODO add your handling code here:
-       // JOptionPane.
+    int option = JOptionPane.showConfirmDialog(null, txtEliminar, "Ingrese un valor", JOptionPane.OK_CANCEL_OPTION);
+    alum.eliminarAlumno(parseInt(txtEliminar.getText()));
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 

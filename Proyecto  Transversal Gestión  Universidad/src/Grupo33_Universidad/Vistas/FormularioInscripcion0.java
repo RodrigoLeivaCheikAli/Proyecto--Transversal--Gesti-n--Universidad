@@ -11,12 +11,13 @@ import java.sql.Date;
  * @author usuario
  */
 public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
-
+ Alumno alum1 = new Alumno(1,23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true);
     /**
      * Creates new form FormularioInscripcion0
      */
     public FormularioInscripcion0() {
         initComponents();
+       
         cargarCombo();
     }
 
@@ -168,7 +169,7 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
     private void cargarCombo(){
         
-        jcAlumnos.addItem(new Alumno(1,23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true));
+        jcAlumnos.addItem(alum1);
         jcAlumnos.addItem(new Alumno(4,12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
         jcAlumnos.addItem(new Alumno(5,34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
         jcAlumnos.addItem(new Alumno(6,12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
