@@ -11,7 +11,13 @@ import java.sql.Date;
  * @author usuario
  */
 public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
-   Alumno alumno1 = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate()); 
+   Alumno alumno1 = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true); 
+   Alumno alumno2= new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true); 
+   Alumno alumno3= new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true); 
+   Alumno alumno4= new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false);
+   Alumno alumno5= new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true);
+   
+   
     /**
      * Creates new form FormularioInscripcion0
      */
@@ -170,14 +176,12 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
     private void cargarCombo(){ 
         
-        jcAlumnos.addItem(String.valueOf(alumno1.getDni())+alumno1.getApellido()+alumno1.getNombre());
-//        jcAlumnos.addItem(new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true));
-//        jcAlumnos.addItem(new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false));
-//        jcAlumnos.addItem(new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true));
-//        
-        
-        
+        jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+" ,"+alumno1.getApellido()+" ,"+alumno1.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+" ,"+alumno2.getApellido()+" ,"+alumno2.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+" ,"+alumno3.getApellido()+" ,"+alumno3.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+" ,"+alumno4.getApellido()+" ,"+alumno4.getNombre());
+        jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+" ,"+alumno5.getApellido()+" ,"+alumno5.getNombre());        
+       
     }
    
 
