@@ -5,35 +5,40 @@
  */
 package Grupo33_Universidad.Vistas;
 import Grupo33_universidad_Entidades.newpackage.*;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import proyecto.transversal.gestión.universidad.accesoADatos.IncripcionData;
+import proyecto.transversal.gestión.universidad.accesoADatos.*;
+
 /**
  *
  * @author usuario
  */
 public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
-   Alumno alumno1 = new Alumno(23456789,"Ifran","Jimena",Date.valueOf("2000-08-31").toLocalDate(),true); 
-   Alumno alumno2 = new Alumno(12345678,"Pizarro","Micaela",Date.valueOf("2001-11-12").toLocalDate(),true); 
-   Alumno alumno3 = new Alumno(34521234,"Marian","Lucas",Date.valueOf("1998-02-23").toLocalDate(),true); 
-   Alumno alumno4 = new Alumno(12312345,"Luna","Juan Pedro",Date.valueOf("1999-08-10").toLocalDate(),false);
-   Alumno alumno5 = new Alumno(12345655,"Florentina","Jimenez",Date.valueOf("2023-9-01").toLocalDate(),true);   
 
    Inscripcion insc=new Inscripcion();
    IncripcionData id= new IncripcionData(); 
    
    private DefaultTableModel modelo= new DefaultTableModel(); 
    public static TreeSet<Materia> obtenerMaterias = new TreeSet<>(); 
+   private Connection con= null;
+    
    
-    /**
-     * Creates new form FormularioInscripcion0
-     */
     public FormularioInscripcion0() {
         initComponents();
+        con= Conexion.getConexion();
         cargarCombo();
         armarCabecera(); 
-        cargarMaterias();
+
     }
 
     /**
@@ -76,6 +81,11 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         jLabel3.setText("Listado de Materias");
 
         jRadioButton1.setText("Materias Inscriptas");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("Materias NO inscriptas");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -186,18 +196,20 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
-      String alumnos= jcAlumnos.getActionCommand(); 
-      String alum= TablaAl.getName();
-//      int filas= jcAlumnos.getSelectedRow();
-      
-      IncripcionData id= new IncripcionData(); 
-      id.guardarInscripcion(insc); 
-      
-      
+        IncripcionData id= new IncripcionData(); 
+        Inscripcion insc=new Inscripcion(); 
+        TablaAl.getSelectedRow(); 
+        jcAlumnos.getSelectedIndex();
+        
+        id.guardarInscripcion(insc);
+        System.out.println("Incripcion guardada");
+
+// ??
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAlumnosActionPerformed
@@ -206,14 +218,28 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcAlumnosActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-       //LLamar al metodo InscripcionData 
+        // TODO add your handling code here:      
+       IncripcionData id= new IncripcionData(); 
+       for(Materia materia:id.obtenerMateriasNOCursadas(jcAlumnos.getSelectedIndex()+1)){                  
+         modelo.addRow(new Object []{materia.getIdMateria(), materia.getNombre(), materia.getAnioMateria()});
+     }              
+ //Por algun motivo solo me da los datos del alumno con id 1 
+ //preguntar a un mentor 
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
          dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        IncripcionData id= new IncripcionData(); 
+          for(Materia materia:id.obtenerMateriasCursadas(jcAlumnos.getSelectedIndex()+1)){                  
+          modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnioMateria()});
+      } 
+        
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -232,13 +258,29 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
  
  
     private void cargarCombo(){ 
+    
+   try {
+        String sql = "SELECT * FROM alumno where estado = true";
+            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet resultSet = ps.executeQuery();
+    
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_Alumno");
+                int DNI = resultSet.getInt("dni");
+                String apellido = resultSet.getString("apellido");
+                String nombre = resultSet.getString("nombre");
+                Date fechaNacimientoSQL = resultSet.getDate("fecha_nacimiento");
+                LocalDate fechaNacimiento = fechaNacimientoSQL.toLocalDate();
+                boolean activo = resultSet.getBoolean("estado");
 
-        jcAlumnos.addItem(""+String.valueOf(alumno1.getDni())+" ,"+alumno1.getApellido()+" ,"+alumno1.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno2.getDni())+" ,"+alumno2.getApellido()+" ,"+alumno2.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno3.getDni())+" ,"+alumno3.getApellido()+" ,"+alumno3.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno4.getDni())+" ,"+alumno4.getApellido()+" ,"+alumno4.getNombre());
-        jcAlumnos.addItem(""+String.valueOf(alumno5.getDni())+" ,"+alumno5.getApellido()+" ,"+alumno5.getNombre());        
+                Alumno alumno = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
+                jcAlumnos.addItem(""+String.valueOf(alumno.getDni())+" ,"+alumno.getApellido()+" ,"+alumno.getNombre());
+            }
 
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
 
     }
    
@@ -249,17 +291,8 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         modelo.addColumn("Año");
         TablaAl.setModel(modelo);
         
-    }
-            
-    private void cargarMaterias(){
-        obtenerMaterias.add(new Materia(1,"Analisis Matematico",1,true));
-        obtenerMaterias.add(new Materia(2,"Quiica Inorganica",1,true));
-        obtenerMaterias.add(new Materia(3,"Fisica 1",2,true));
-        obtenerMaterias.add(new Materia(4,"Bioestadistica",2,true));
-        obtenerMaterias.add(new Materia(5,"Matematica",1,true));
-        obtenerMaterias.add(new Materia(6,"Calculo",3,true));
-       
-      
         
     }
+
+   
 }
