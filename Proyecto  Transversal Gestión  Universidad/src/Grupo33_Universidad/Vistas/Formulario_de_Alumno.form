@@ -147,9 +147,6 @@
       <Properties>
         <Property name="label" type="java.lang.String" value="Salir"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
-      </Events>
     </Component>
     <Component class="java.awt.Button" name="btnGuardar">
       <Properties>
@@ -161,7 +158,8 @@
     </Component>
     <Component class="java.awt.Button" name="btnEliminar">
       <Properties>
-        <Property name="label" type="java.lang.String" value="Elimnar"/>
+        <Property name="actionCommand" type="java.lang.String" value="Eliminar"/>
+        <Property name="label" type="java.lang.String" value="Eliminar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>

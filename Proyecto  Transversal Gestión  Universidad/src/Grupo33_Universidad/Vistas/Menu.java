@@ -75,6 +75,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu6.add(jMenuItem5);
 
         jMenuItem6.setText("Manipulacion de Notas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem6);
 
         jMenuBar1.add(jMenu6);
@@ -125,6 +130,16 @@ public class Menu extends javax.swing.JFrame {
          jDesktopPane1.moveToFront(insc);
           
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+         jDesktopPane1.repaint();
+        Actualización_de_notas nombre=new  Actualización_de_notas();      
+       nombre.setVisible(true);
+        jDesktopPane1.add(nombre);
+         jDesktopPane1.moveToFront(nombre);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

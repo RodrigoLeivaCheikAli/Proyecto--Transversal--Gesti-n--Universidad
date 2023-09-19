@@ -70,11 +70,6 @@ private Connection con= null;
         label1.setText("Documento");
 
         btnSalir.setLabel("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
 
         btnGuardar.setLabel("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +78,8 @@ private Connection con= null;
             }
         });
 
-        btnEliminar.setLabel("Elimnar");
+        btnEliminar.setActionCommand("Eliminar");
+        btnEliminar.setLabel("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -264,11 +260,6 @@ private Connection con= null;
     int option = JOptionPane.showConfirmDialog(null, txtEliminar, "Ingrese el Id del Alumno", JOptionPane.OK_CANCEL_OPTION);
     alum.eliminarAlumno(parseInt(txtEliminar.getText())); 
     }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-            // TODO add your handling code here:
-              dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
