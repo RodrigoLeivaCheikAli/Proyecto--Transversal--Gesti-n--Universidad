@@ -6,6 +6,8 @@
 package Grupo33_Universidad.Vistas;
 
 import Grupo33_universidad_Entidades.newpackage.Alumno;
+import Grupo33_universidad_Entidades.newpackage.Inscripcion;
+import Grupo33_universidad_Entidades.newpackage.Materia;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,6 +27,11 @@ import proyecto.transversal.gestión.universidad.accesoADatos.IncripcionData;
 public class Actualización_de_notas extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
 private Connection con= null;
+public Alumno alum;
+public Materia materia;
+public Inscripcion inscripcion;
+IncripcionData nota = new IncripcionData();
+
     /**
      * Creates new form Actualización_de_notas
      */
@@ -34,6 +41,10 @@ private Connection con= null;
         initComponents();
         ArmarCabecera();
         obtenerAlumno();
+        obtenerMateria();
+        obtenerInscripcion();
+        CargarDatos(inscripcion);
+         
     }
 
     /**
@@ -64,6 +75,12 @@ private Connection con= null;
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Seleccione el Alumno");
+
+        cboAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboAlumnosActionPerformed(evt);
+            }
+        });
 
         TNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,6 +142,10 @@ private Connection con= null;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cboAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAlumnosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TNotas;
@@ -160,8 +181,8 @@ private void obtenerAlumno(){
                 LocalDate fechaNacimiento = fechaNacimientoSQL.toLocalDate();
                 boolean activo = resultSet.getBoolean("estado");
 
-                Alumno alumno = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
-                cboAlumnos.addItem(""+String.valueOf(alumno.getDni())+" ,"+alumno.getApellido()+" ,"+alumno.getNombre());
+                 alum = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
+                cboAlumnos.addItem(alum.getId_alumno()+" ,"+ alum.getDni()+" ,"+alum.getApellido()+" ,"+alum.getNombre());
             }
 
 
@@ -170,10 +191,59 @@ private void obtenerAlumno(){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
 
+}    
+private void obtenerMateria(){
+     try {
+            String sql = "SELECT * FROM materia ";
+            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+              int id = resultSet.getInt("id_materia");
+              String nombre = resultSet.getString("nombre");
+              int año = resultSet.getInt("año");
+              boolean activo = resultSet.getBoolean("estado");
+                materia = new Materia(id, nombre, SOMEBITS, activo);
+            }
+             
+
+
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+}
+private void obtenerInscripcion(){
+     try {
+            String sql = "SELECT * FROM inscripcion ";
+            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int id_Insc = resultSet.getInt("id_inscripto");
+                int nota = resultSet.getInt("nota");
+                int id_Alum = resultSet.getInt("id_alumno");
+                int id_Mat = resultSet.getInt("id_materia");
+                inscripcion = new Inscripcion(id_Insc, nota, alum, materia);
+            }
+             
+
+
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+}
+private void CargarDatos(Inscripcion in){
+        
+        modelo.addRow(new Object []{in.getMateria().getIdMateria(), in.getMateria().getNombre(), in.getNota()});
+    }
        
     
-//private void CargarDatos(IncripcionData nota){
-//    modelo.addRow(new Object []{nota.obtenerMateriasCursadas());
-//}
+{
+    
+   }
 }
-}
+
+
+
