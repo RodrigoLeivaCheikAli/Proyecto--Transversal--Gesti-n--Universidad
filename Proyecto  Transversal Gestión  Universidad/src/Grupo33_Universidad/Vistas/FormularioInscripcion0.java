@@ -18,6 +18,7 @@ import java.util.TreeSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto.transversal.gestión.universidad.accesoADatos.*;
+import Grupo33_universidad_Entidades.*;
 
 /**
  *
@@ -27,9 +28,9 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
    Inscripcion insc=new Inscripcion();
    IncripcionData id= new IncripcionData(); 
+   Alumno alu= new Alumno(); 
    
-   private DefaultTableModel modelo= new DefaultTableModel(); 
-   public static TreeSet<Materia> obtenerMaterias = new TreeSet<>(); 
+   private DefaultTableModel modelo= new DefaultTableModel();
    private Connection con= null;
     
    
@@ -200,20 +201,33 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
-        // TODO add your handling code here:
-        IncripcionData id= new IncripcionData(); 
-        Inscripcion insc=new Inscripcion(); 
-        TablaAl.getSelectedRow(); 
-        jcAlumnos.getSelectedIndex();
+        // TODO add your handling code here:  
+ 
+        Inscripcion insc= new Inscripcion();
+        try {            
+        int filaS = TablaAl.getSelectedRow();
+        IncripcionData id= new IncripcionData();
         
-        id.guardarInscripcion(insc);
-        System.out.println("Incripcion guardada");
+        Materia mat=new Materia((int)modelo.getValueAt(filaS, 0), (String)modelo.getValueAt(filaS, 1),(int)modelo.getValueAt(filaS, 2),true);  
+                
+//        double nota = insc.getNota();
+        //Problemitas para pasar la variable nota ;-;
+        
+        //double nota = Double.parseDouble(insc.getNota());
+        Inscripcion ins =new Inscripcion((Alumno)jcAlumnos.getSelectedItem(),mat,nota);
+        id.guardarInscripcion(ins); 
+        }
+        
+        catch(ArrayIndexOutOfBoundsException e){
+                JOptionPane.showMessageDialog(null, "No hay nada seleccionado");
+                
+          }
 
-// ??
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcAlumnosActionPerformed
         // TODO add your handling code here:
+        
         
     }//GEN-LAST:event_jcAlumnosActionPerformed
 
@@ -234,10 +248,15 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-        IncripcionData id= new IncripcionData(); 
-          for(Materia materia:id.obtenerMateriasCursadas(jcAlumnos.getSelectedIndex()+1)){                  
-          modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnioMateria()});
-      } 
+        jRadioButton2.setSelected(false);
+        borrarFilas();
+        IncripcionData id=new IncripcionData();
+        Alumno alu= (Alumno)jcAlumnos.getSelectedItem();
+        
+        if(jbInscribir.isSelected()==true)
+            for(Materia materia:id.obtenerMateriasCursadas(alu.getId_alumno()))
+                modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnioMateria()}) ;
+         
         
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -274,7 +293,7 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
                 boolean activo = resultSet.getBoolean("estado");
 
                 Alumno alumno = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
-                jcAlumnos.addItem(""+String.valueOf(alumno.getDni())+" ,"+alumno.getApellido()+" ,"+alumno.getNombre());
+                jcAlumnos.addItem(""+(String.valueOf(alumno.getDni()))+" ,"+alumno.getApellido()+" ,"+alumno.getNombre());
             }
 
             
@@ -293,6 +312,11 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         
         
     }
-
+    private void borrarFilas(){
+        int f = TablaAl.getRowCount()-1;
+        for(;f>=0;f--){
+              modelo.removeRow(f);
+    }
+    }
    
 }
