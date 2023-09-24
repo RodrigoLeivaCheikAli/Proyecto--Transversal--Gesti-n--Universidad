@@ -197,31 +197,35 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
         // TODO add your handling code here:
+        try {
+            int filaS = TablaAl.getSelectedRow();
+            IncripcionData id = new IncripcionData();
+            Alumno alum = (Alumno) jcAlumnos.getSelectedItem();
+            Materia mate = new Materia((int) modelo.getValueAt(filaS, 0), (String) modelo.getValueAt(filaS, 1), (int) modelo.getValueAt(filaS, 2), true);
+            id.borrarInscripcionMateriaAlumno(alum.getId_alumno(), mate.getIdMateria());
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado nada, intentar nuevamente");
+        }
         
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:  
- 
-        Inscripcion insc= new Inscripcion();
-        try {            
-        int filaS = TablaAl.getSelectedRow();
-        IncripcionData id= new IncripcionData();
+   
         
-        Materia mat=new Materia((int)modelo.getValueAt(filaS, 0), (String)modelo.getValueAt(filaS, 1),(int)modelo.getValueAt(filaS, 2),true);  
-                
-//        double nota = insc.getNota();
-        //Problemitas para pasar la variable nota ;-;
-        
-        //double nota = Double.parseDouble(insc.getNota());
-        Inscripcion ins =new Inscripcion((Alumno)jcAlumnos.getSelectedItem(),mat,nota);
-        id.guardarInscripcion(ins); 
-        }
-        
-        catch(ArrayIndexOutOfBoundsException e){
-                JOptionPane.showMessageDialog(null, "No hay nada seleccionado");
-                
-          }
+    try {
+        int fs = TablaAl.getSelectedRow();
+        IncripcionData id = new IncripcionData();
+        Materia mat = new Materia((int)modelo.getValueAt(fs, 0), (String)modelo.getValueAt(fs, 1), (int)modelo.getValueAt(fs, 2), true);
+
+        // No asignar 0 a la variable nota, simplemente omítela en la construcción de Inscripcion
+        Inscripcion in = new Inscripcion((Alumno)jcAlumnos.getSelectedItem(), mat);
+        id.guardarInscripcion(in);
+
+          } catch (ArrayIndexOutOfBoundsException e) {
+        JOptionPane.showMessageDialog(this, "No ha seleccionado nada, intente nuevamente");
+       }
 
     }//GEN-LAST:event_jbInscribirActionPerformed
 
@@ -232,13 +236,16 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jcAlumnosActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:      
-       IncripcionData id= new IncripcionData(); 
+        // TODO add your handling code here:  
+        jRadioButton1.setSelected(false);
+        borrarFilas();
+        IncripcionData id= new IncripcionData();
+       if (jRadioButton2.isSelected() == true) {
        for(Materia materia:id.obtenerMateriasNOCursadas(jcAlumnos.getSelectedIndex()+1)){                  
          modelo.addRow(new Object []{materia.getIdMateria(), materia.getNombre(), materia.getAnioMateria()});
+        }
      }              
- //Por algun motivo solo me da los datos del alumno con id 1 
- //preguntar a un mentor 
+
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -248,15 +255,16 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
+        
         jRadioButton2.setSelected(false);
         borrarFilas();
-        IncripcionData id=new IncripcionData();
-        Alumno alu= (Alumno)jcAlumnos.getSelectedItem();
-        
-        if(jbInscribir.isSelected()==true)
-            for(Materia materia:id.obtenerMateriasCursadas(alu.getId_alumno()))
-                modelo.addRow(new Object[]{materia.getIdMateria(),materia.getNombre(),materia.getAnioMateria()}) ;
-         
+        IncripcionData id = new IncripcionData();
+        Alumno al = (Alumno)jcAlumnos.getSelectedItem();
+        if (jRadioButton1.isSelected() == true) {
+            for (Materia m : id.obtenerMateriasCursadas(al.getId_alumno())) {
+                modelo.addRow(new Object[]{m.getIdMateria(),m.getNombre(),m.getAnioMateria()});
+            }
+        }
         
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
@@ -272,33 +280,18 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAnular;
     private javax.swing.JButton jbInscribir;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcAlumnos;
+    private javax.swing.JComboBox<Alumno> jcAlumnos;
     // End of variables declaration//GEN-END:variables
  
  
     private void cargarCombo(){ 
-    
-   try {
-        String sql = "SELECT * FROM alumno where estado = true";
-            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ResultSet resultSet = ps.executeQuery();
-    
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id_Alumno");
-                int DNI = resultSet.getInt("dni");
-                String apellido = resultSet.getString("apellido");
-                String nombre = resultSet.getString("nombre");
-                Date fechaNacimientoSQL = resultSet.getDate("fecha_nacimiento");
-                LocalDate fechaNacimiento = fechaNacimientoSQL.toLocalDate();
-                boolean activo = resultSet.getBoolean("estado");
+        
+        AlumnoData ad = new AlumnoData();
+        ArrayList<Alumno> alumnos = new ArrayList<>();
 
-                Alumno alumno = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
-                jcAlumnos.addItem(""+(String.valueOf(alumno.getDni()))+" ,"+alumno.getApellido()+" ,"+alumno.getNombre());
-            }
-
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        for (Alumno alum : ad.listarAlumnos()) {
+            alumnos.add(alum);
+            jcAlumnos.addItem(alum);
         }
 
     }
