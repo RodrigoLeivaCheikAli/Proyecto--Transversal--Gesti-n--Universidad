@@ -127,6 +127,7 @@ public Materia buscarMateria(int id) {
          PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
          while (rs.next()) {
+             
          Materia materia = new Materia();
 
          materia.setIdMateria(rs.getInt("id_materia"));
@@ -142,5 +143,6 @@ public Materia buscarMateria(int id) {
      }
      return materias;
      }
+    
     }
 

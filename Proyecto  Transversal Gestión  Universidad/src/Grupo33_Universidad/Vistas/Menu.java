@@ -85,8 +85,18 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Consultas");
+        jMenu7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu7ActionPerformed(evt);
+            }
+        });
 
         jMenuItem7.setText("Alumos por Materia");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem7);
 
         jMenuBar1.add(jMenu7);
@@ -140,6 +150,21 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(nombre);
          jDesktopPane1.moveToFront(nombre);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu7ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        AlumnoporMateria alumMat=new AlumnoporMateria();      
+        alumMat.setVisible(true);
+        jDesktopPane1.add(alumMat);
+        jDesktopPane1.moveToFront(alumMat);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
