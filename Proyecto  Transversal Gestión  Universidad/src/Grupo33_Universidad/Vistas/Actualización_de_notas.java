@@ -15,7 +15,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.List;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import proyecto.transversal.gestión.universidad.accesoADatos.*;
 
@@ -74,6 +78,11 @@ IncripcionData nota = new IncripcionData();
         });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel1.setText("Carga de Notas");
@@ -89,15 +98,23 @@ IncripcionData nota = new IncripcionData();
 
         TNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TNotas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,6 +184,13 @@ IncripcionData nota = new IncripcionData();
          this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        alum = (Alumno) cboAlumnos.getSelectedItem();
+        
+        nota.actualizarNota(alum.getId_alumno(), WIDTH, WIDTH);
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,6 +207,15 @@ private void ArmarCabecera(){
     modelo.addColumn("Nombre");
     modelo.addColumn("Notas");
     TNotas.setModel(modelo);
+    TNotas.setDefaultEditor(Object.class, null);
+
+// Ahora, para permitir que ciertas celdas sean editables, puedes utilizar un TableCellEditor personalizado:
+JTextField txt = new JTextField();
+txt.setBorder(null);
+DefaultCellEditor editor = new DefaultCellEditor(txt); 
+
+// Luego, asigna el editor a las celdas que deseas que sean editables. Por ejemplo, si deseas que la segunda columna sea editable:
+TNotas.getColumnModel().getColumn(2).setCellEditor(editor);
     
 }
 private void obtenerAlumno(){

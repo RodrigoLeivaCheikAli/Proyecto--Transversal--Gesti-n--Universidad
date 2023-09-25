@@ -50,7 +50,7 @@ public class IncripcionData {
                    
     }
     
-    public void actualiarNota(int id_alumno,int id_materia,double nota){
+    public void actualizarNota(int id_alumno,int id_materia,double nota){
         String sql="UPDATE inscripcion SET nota=? WHERE id_alumno=? and id_materia=?";
             try { 
                 PreparedStatement ps= con.prepareStatement(sql);
