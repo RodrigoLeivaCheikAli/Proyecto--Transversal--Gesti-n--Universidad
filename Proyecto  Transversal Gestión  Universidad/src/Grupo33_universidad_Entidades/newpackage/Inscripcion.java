@@ -22,6 +22,12 @@ public class Inscripcion{
     public Inscripcion() {
     }
 
+    public Inscripcion(Alumno alumno, Materia materia) {
+        this.alumno = alumno;
+        this.materia = materia;
+    }
+
+    
     public Inscripcion(double nota, Alumno alumno, Materia materia) {
         this.nota = nota;
         this.alumno = alumno;
