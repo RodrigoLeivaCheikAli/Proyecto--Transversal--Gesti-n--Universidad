@@ -107,7 +107,7 @@ public Materia buscarMateria(int id) {
         materia.setNombre(rs.getString("nombre"));
         materia.setAnioMateria(rs.getInt("Año"));
         materia.setActivo(true);
-         JOptionPane.showMessageDialog(null, "Se encontro");
+         
         } else {
         JOptionPane.showMessageDialog(null, "No existe la materia");
 

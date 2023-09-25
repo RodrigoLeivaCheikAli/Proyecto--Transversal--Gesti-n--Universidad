@@ -149,10 +149,11 @@ IncripcionData nota = new IncripcionData();
 
     private void cboAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAlumnosActionPerformed
         // TODO add your handling code here:
+         modelo.setRowCount(0);
         alum = (Alumno) cboAlumnos.getSelectedItem();
         for (Inscripcion in : nota.obtenerInscripcionesPorAlumno(alum.getId_alumno()) ) {
             for (Materia obtenerMateriasCursada : nota.obtenerMateriasCursadas(alum.getId_alumno())) {
-                 
+                
                 modelo.addRow(new Object []{obtenerMateriasCursada.getIdMateria(), obtenerMateriasCursada.getNombre(), in.getNota()});
                
             }
