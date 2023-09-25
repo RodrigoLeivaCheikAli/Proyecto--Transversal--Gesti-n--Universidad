@@ -43,7 +43,7 @@ IncripcionData nota = new IncripcionData();
         obtenerAlumno();
         obtenerMateria();
         obtenerInscripcion();
-        CargarDatos(inscripcion);
+     
          
     }
 
@@ -144,6 +144,16 @@ IncripcionData nota = new IncripcionData();
 
     private void cboAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAlumnosActionPerformed
         // TODO add your handling code here:
+        alum = (Alumno) cboAlumnos.getSelectedItem();
+        for (Inscripcion in : nota.obtenerInscripcionesPorAlumno(alum.getId_alumno()) ) {
+            for (Materia obtenerMateriasCursada : nota.obtenerMateriasCursadas(alum.getId_alumno())) {
+                 
+                modelo.addRow(new Object []{obtenerMateriasCursada.getIdMateria(), obtenerMateriasCursada.getNombre(), in.getNota()});
+               
+            }
+ 
+            
+        }
     }//GEN-LAST:event_cboAlumnosActionPerformed
 
 
@@ -151,7 +161,7 @@ IncripcionData nota = new IncripcionData();
     private javax.swing.JTable TNotas;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cboAlumnos;
+    private javax.swing.JComboBox<Alumno> cboAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -182,7 +192,7 @@ private void obtenerAlumno(){
                 boolean activo = resultSet.getBoolean("estado");
 
                  alum = new Alumno(id, DNI, nombre, apellido, fechaNacimiento, activo);
-                cboAlumnos.addItem(alum.getId_alumno()+" ,"+ alum.getDni()+" ,"+alum.getApellido()+" ,"+alum.getNombre());
+                cboAlumnos.addItem(alum);
             }
 
 
@@ -234,10 +244,7 @@ private void obtenerInscripcion(){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
 }
-private void CargarDatos(Inscripcion in){
-        
-        modelo.addRow(new Object []{in.getMateria().getIdMateria(), in.getMateria().getNombre(), in.getNota()});
-    }
+
        
     
 {
