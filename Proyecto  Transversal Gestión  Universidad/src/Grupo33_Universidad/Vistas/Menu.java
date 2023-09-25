@@ -161,7 +161,7 @@ public class Menu extends javax.swing.JFrame {
          jDesktopPane1.moveToFront(nombre);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-<<<<<<< HEAD
+
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         // TODO add your handling code here:
         
@@ -176,7 +176,7 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(alumMat);
         jDesktopPane1.moveToFront(alumMat);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-=======
+
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         
@@ -191,7 +191,6 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(gMateria);
         jDesktopPane1.moveToFront(gMateria);
     }//GEN-LAST:event_jMenuMateriaActionPerformed
->>>>>>> main
 
     /**
      * @param args the command line arguments
