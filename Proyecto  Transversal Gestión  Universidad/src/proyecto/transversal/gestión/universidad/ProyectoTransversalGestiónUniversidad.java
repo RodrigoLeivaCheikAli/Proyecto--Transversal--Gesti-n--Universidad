@@ -74,16 +74,16 @@ public class ProyectoTransversalGestiónUniversidad {
 //
 //     }
 
-     for(Materia materia:id.obtenerMateriasNOCursadas(5)){        
-         System.out.println("Nombre: "+materia.getNombre());        
-     }
+//     for(Materia materia:id.obtenerMateriasNOCursadas(5)){        
+//         System.out.println("Nombre: "+materia.getNombre());        
+//     }
 
        for(Inscripcion insc:id.obtenerInscripcionesPorAlumno(1)){
-           System.out.println("Materia: "+insc.getMateria());
+           System.out.println("Materia: "+insc.getMateria() + insc.getNota());
        }
        
-       for(Materia mater:id.obtenerMateriasCursadas(5)){
-           System.out.println("Materia: "+mater.getIdMateria());
-       }
+//       for(Materia mater:id.obtenerMateriasCursadas(5)){
+//           System.out.println("MateriaC: "+mater.getIdMateria());
+//       }
        
   }}  

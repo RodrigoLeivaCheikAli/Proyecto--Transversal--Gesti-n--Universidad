@@ -75,7 +75,7 @@ public void modificarMateria(Materia materia){
     
 }
 
-public void eliminarAlumno(int id) {
+public void eliminarMateria(int id) {
 
      try {
          String sql = "UPDATE materia SET Estado = 0 WHERE id_Materia = ? ";
@@ -107,10 +107,10 @@ public Materia buscarMateria(int id) {
         materia.setNombre(rs.getString("nombre"));
         materia.setAnioMateria(rs.getInt("Año"));
         materia.setActivo(true);
-         JOptionPane.showMessageDialog(null, "Se encontro");
+         
         } else {
         JOptionPane.showMessageDialog(null, "No existe la materia");
-
+        //materia inactiva
         ps.close();}
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia "+ex.getMessage()); 

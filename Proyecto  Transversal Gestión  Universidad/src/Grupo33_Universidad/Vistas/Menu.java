@@ -22,7 +22,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuMateria = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -46,6 +46,11 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Alumno");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Formulario de Alumno");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -59,8 +64,13 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu4.setText("Materia");
 
-        jMenuItem4.setText("Formulario de Materia");
-        jMenu4.add(jMenuItem4);
+        jMenuMateria.setText("Formulario de Materia");
+        jMenuMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMateriaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuMateria);
 
         jMenuBar1.add(jMenu4);
 
@@ -151,6 +161,7 @@ public class Menu extends javax.swing.JFrame {
          jDesktopPane1.moveToFront(nombre);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+<<<<<<< HEAD
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         // TODO add your handling code here:
         
@@ -165,6 +176,22 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(alumMat);
         jDesktopPane1.moveToFront(alumMat);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+=======
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMateriaActionPerformed
+        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Gestion_materias gMateria=new Gestion_materias();
+        gMateria.setVisible(true);
+        jDesktopPane1.add(gMateria);
+        jDesktopPane1.moveToFront(gMateria);
+    }//GEN-LAST:event_jMenuMateriaActionPerformed
+>>>>>>> main
 
     /**
      * @param args the command line arguments
@@ -211,9 +238,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuMateria;
     // End of variables declaration//GEN-END:variables
 }

@@ -108,7 +108,7 @@ public class AlumnoData {
                 alumno.setNombre(rs.getString("nombre")); 
                 alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
                 alumno.setEstado(true); 
-                          JOptionPane.showMessageDialog(null,"se encontro");          
+                                   
              }else {                 
                 JOptionPane.showMessageDialog(null,"No existe ese alumno");                
             }             
