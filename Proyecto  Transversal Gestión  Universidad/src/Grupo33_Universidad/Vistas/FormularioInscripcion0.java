@@ -64,7 +64,6 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 102));
-        setClosable(true);
         setForeground(new java.awt.Color(0, 102, 51));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -250,7 +249,10 @@ public class FormularioInscripcion0 extends javax.swing.JInternalFrame {
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
-         dispose();
+         int resp = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed

@@ -196,8 +196,10 @@ public class IncripcionData {
         
     public List<Alumno> obtenerAlumnosXMateria(int id_materia){
         
-        ArrayList<Alumno> alumnosMateria=new ArrayList<>(); //Tanto "a" como "i" son alias 
-        String sql="SELECT a.id_alumno, dni, nombre, apellido, fecha_naciiento, estado FROM inscripcion i,alumno a WHERE i.id_alumno = a.id_alumno AND id_materia=? AND a.estado=1";
+        List<Alumno> alumnosMateria=new ArrayList<>(); //Tanto "a" como "i" son alias 
+        String sql="SELECT a.id_alumno"// dni, nombre, apellido, fecha_nacimiento, estado"
+                + "FROM inscripcion i,alumno a WHERE i.id_alumno = a.id_alumno "
+                + "AND id_materia=? AND a.estado=1";
         
             try {
                 PreparedStatement ps=con.prepareCall(sql);
@@ -216,7 +218,7 @@ public class IncripcionData {
                 ps.close();
                 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
+                JOptionPane.showMessageDialog(null, ex);
             }
         
         return alumnosMateria; 
