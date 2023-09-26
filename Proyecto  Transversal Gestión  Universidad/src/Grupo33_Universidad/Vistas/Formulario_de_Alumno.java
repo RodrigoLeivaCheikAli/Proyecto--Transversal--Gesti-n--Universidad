@@ -267,11 +267,15 @@ private Connection con= null;
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+
         // TODO add your handling code here:
         int respuesta = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
         if (respuesta == JOptionPane.YES_OPTION) {
 
         this.dispose();} 
+
+        
+
     }//GEN-LAST:event_btnSalirActionPerformed
 
 
