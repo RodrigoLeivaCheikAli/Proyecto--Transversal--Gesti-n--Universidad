@@ -44,8 +44,7 @@ IncripcionData nota = new IncripcionData();
         initComponents();
         ArmarCabecera();
         obtenerAlumno();
-        obtenerMateria();
-        obtenerInscripcion();
+        
      
          
     }
@@ -122,18 +121,19 @@ IncripcionData nota = new IncripcionData();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cboAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
@@ -153,7 +153,7 @@ IncripcionData nota = new IncripcionData();
                     .addComponent(jLabel2))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnSalir))
@@ -187,8 +187,33 @@ IncripcionData nota = new IncripcionData();
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         alum = (Alumno) cboAlumnos.getSelectedItem();
-        
-        nota.actualizarNota(alum.getId_alumno(), WIDTH, WIDTH);
+        try {
+            if (alum != null) {
+                List<Inscripcion> inscripciones = nota.obtenerInscripcionesPorAlumno(alum.getId_alumno());
+
+                int contador = 0;
+                for (Inscripcion inscripcion : inscripciones) {
+                    
+                    String notaStr = modelo.getValueAt(contador, 2).toString(); 
+                    double notas = Double.parseDouble(notaStr); 
+                    if (notas >= 0 && notas <= 10) { 
+                        if (notas != inscripcion.getNota()) {
+
+                            nota.actualizarNota(alum.getId_alumno(), inscripcion.getMateria().getIdMateria(), notas);
+                         } else {   
+                            JOptionPane.showMessageDialog(this,"No se modifico la nota");
+                        }
+} else {
+                        JOptionPane.showMessageDialog(this, "Error: La nota debe estar en el rango de 0 a 10");
+                        modelo.setValueAt(inscripcion.getNota(), contador, 2); 
+                    }
+                    contador++;
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Solo se aceptan números " + e.getMessage());
+
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 
@@ -247,52 +272,12 @@ private void obtenerAlumno(){
         }
 
 }    
-private void obtenerMateria(){
-     try {
-            String sql = "SELECT * FROM materia ";
-            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
-              int id = resultSet.getInt("id_materia");
-              String nombre = resultSet.getString("nombre");
-              int año = resultSet.getInt("año");
-              boolean activo = resultSet.getBoolean("estado");
-                materia = new Materia(id, nombre, SOMEBITS, activo);
-            }
-             
-
-
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
-        }
-}
-private void obtenerInscripcion(){
-     try {
-            String sql = "SELECT * FROM inscripcion ";
-            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ResultSet resultSet = ps.executeQuery();
-
-            while (resultSet.next()) {
-                int id_Insc = resultSet.getInt("id_inscripto");
-                int nota = resultSet.getInt("nota");
-                int id_Alum = resultSet.getInt("id_alumno");
-                int id_Mat = resultSet.getInt("id_materia");
-                inscripcion = new Inscripcion(id_Insc, nota, alum, materia);
-            }
-             
-
-
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
-        }
 }
 
        
 
-}
+
 
 
 
