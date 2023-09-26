@@ -1,12 +1,17 @@
 
 package Grupo33_Universidad.Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setSize(500,520);
     }
 
     /**
@@ -19,7 +24,17 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu2 = new javax.swing.JMenu();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        ImageIcon icono= new ImageIcon(getClass().getResource("/Recursos/ULP3.png"));
+        Image mili= icono.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+
+                g.drawImage(mili,0,0,getWidth(),getHeight(),this);
+
+            }
+
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -30,7 +45,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
+        jbSalir = new javax.swing.JMenu();
 
         jMenu2.setText("jMenu2");
 
@@ -44,7 +59,7 @@ public class Menu extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 727, Short.MAX_VALUE)
+            .addGap(0, 732, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Alumno");
@@ -113,23 +128,13 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-<<<<<<< Updated upstream
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida (1).png"))); // NOI18N
-        jMenu8.setToolTipText("");
-=======
-        jMenu8.setText("Salir");
-        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbSalir.setText("Salir");
+        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu8MouseClicked(evt);
+                jbSalirMouseClicked(evt);
             }
         });
->>>>>>> Stashed changes
-        jMenu8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu8ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu8);
+        jMenuBar1.add(jbSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -209,18 +214,13 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.moveToFront(gMateria);
     }//GEN-LAST:event_jMenuMateriaActionPerformed
 
-    private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
+    private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenu8ActionPerformed
-
-    private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
-        // TODO add your handling code here:
-        int respuesta = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
-        if (respuesta == JOptionPane.YES_OPTION) {
-
-        this.dispose(); }
-    }//GEN-LAST:event_jMenu8MouseClicked
+        int resp = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_OPTION){
+            this.dispose();
+        }
+    }//GEN-LAST:event_jbSalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -264,12 +264,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuMateria;
+    private javax.swing.JMenu jbSalir;
     // End of variables declaration//GEN-END:variables
 }
