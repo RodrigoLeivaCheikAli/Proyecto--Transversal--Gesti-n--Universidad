@@ -197,12 +197,10 @@ public class IncripcionData {
     public List<Alumno> obtenerAlumnosXMateria(int id_materia){
         
         List<Alumno> alumnosMateria=new ArrayList<>(); //Tanto "a" como "i" son alias 
-        String sql="SELECT a.id_alumno"// dni, nombre, apellido, fecha_nacimiento, estado"
-                + "FROM inscripcion i,alumno a WHERE i.id_alumno = a.id_alumno "
-                + "AND id_materia=? AND a.estado=1";
+        String sql="SELECT a.id_alumno, dni, nombre, apellido, fecha_nacimiento, estado FROM inscripcion i,alumno a WHERE i.id_alumno = a.id_alumno AND id_materia=? AND a.estado=1";
         
             try {
-                PreparedStatement ps=con.prepareCall(sql);
+                PreparedStatement ps=con.prepareStatement(sql);
                 ps.setInt(1, id_materia);
                 ResultSet rs= ps.executeQuery();
                 while(rs.next()){

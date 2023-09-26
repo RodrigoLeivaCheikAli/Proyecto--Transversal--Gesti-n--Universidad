@@ -2,21 +2,30 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< Updated upstream
         <group>
             <file>file:/C:/Users/usuario/Documents/kraken/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/FormularioInscripcion0.java</file>
         </group>
+=======
+>>>>>>> Stashed changes
         <group name="DA Guia 2 GUI">
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/FormularioInscripcion0.java</file>
-            <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/Conexion.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_universidad_Entidades/newpackage/Alumno.java</file>
-            <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/MateriaData.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/ProyectoTransversalGestiónUniversidad.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/Menu.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/Actualización_de_notas.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/Formulario_de_Alumno.java</file>
-            <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_universidad_Entidades/newpackage/Inscripcion.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/IncripcionData.java</file>
             <file>file:/C:/Users/User/Desktop/Practica/Desarrollo%20de%20Aplicaciones/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/AlumnoData.java</file>
         </group>
+<<<<<<< Updated upstream
+=======
+        <group>
+            <file>file:/C:/Users/usuario/Documents/kraken/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/IncripcionData.java</file>
+            <file>file:/C:/Users/usuario/Documents/kraken/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/Menu.java</file>
+            <file>file:/C:/Users/usuario/Documents/kraken/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/Grupo33_Universidad/Vistas/AlumnoporMateria.java</file>
+            <file>file:/C:/Users/usuario/Documents/kraken/Proyecto--Transversal--Gesti-n--Universidad/Proyecto%20%20Transversal%20Gestión%20%20Universidad/src/proyecto/transversal/gestión/universidad/accesoADatos/MateriaData.java</file>
+        </group>
+>>>>>>> Stashed changes
     </open-files>
 </project-private>

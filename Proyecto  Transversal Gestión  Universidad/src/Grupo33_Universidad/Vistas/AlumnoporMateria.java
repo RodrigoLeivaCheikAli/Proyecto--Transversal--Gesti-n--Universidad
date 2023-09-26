@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto.transversal.gestión.universidad.accesoADatos.*;
 import Grupo33_universidad_Entidades.*;
+import java.util.List;
 
 /**
  *
@@ -46,7 +47,7 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
         jcMaterias = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtAlumnos = new javax.swing.JTable();
-        bSalir = new java.awt.Button();
+        jbSalir = new java.awt.Button();
 
         label1.setName(""); // NOI18N
         label1.setText("Listado de Alumnos por Materia");
@@ -74,11 +75,11 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtAlumnos);
 
-        bSalir.setLabel("Salir");
-        bSalir.setName(""); // NOI18N
-        bSalir.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.setLabel("Salir");
+        jbSalir.setName(""); // NOI18N
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSalirActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
@@ -105,7 +106,7 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
@@ -119,7 +120,7 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
 
@@ -129,14 +130,14 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here
         
         int resp = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION){
             this.dispose();
         }
-    }//GEN-LAST:event_bSalirActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMateriasActionPerformed
         // TODO add your handling code here:
@@ -147,8 +148,8 @@ public class AlumnoporMateria extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button bSalir;
     private javax.swing.JScrollPane jScrollPane1;
+    private java.awt.Button jbSalir;
     private javax.swing.JComboBox<Materia> jcMaterias;
     private javax.swing.JTable jtAlumnos;
     private java.awt.Label label1;
