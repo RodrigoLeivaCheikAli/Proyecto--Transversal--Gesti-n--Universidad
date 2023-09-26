@@ -1,6 +1,8 @@
 
 package Grupo33_Universidad.Vistas;
 
+import javax.swing.JOptionPane;
+
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
@@ -112,6 +114,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         jMenu8.setText("Salir");
+        jMenu8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu8ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
@@ -191,6 +198,14 @@ public class Menu extends javax.swing.JFrame {
         jDesktopPane1.add(gMateria);
         jDesktopPane1.moveToFront(gMateria);
     }//GEN-LAST:event_jMenuMateriaActionPerformed
+
+    private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
+        // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION) {
+
+        this.dispose(); }
+    }//GEN-LAST:event_jMenu8ActionPerformed
 
     /**
      * @param args the command line arguments
