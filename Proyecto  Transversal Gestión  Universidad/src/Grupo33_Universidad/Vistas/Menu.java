@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
+            .addGap(0, 727, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Alumno");
@@ -113,7 +113,8 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu8.setText("Salir");
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida (1).png"))); // NOI18N
+        jMenu8.setToolTipText("");
         jMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu8ActionPerformed(evt);
