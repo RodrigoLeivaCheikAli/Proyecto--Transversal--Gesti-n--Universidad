@@ -113,8 +113,17 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
+<<<<<<< Updated upstream
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida (1).png"))); // NOI18N
         jMenu8.setToolTipText("");
+=======
+        jMenu8.setText("Salir");
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu8MouseClicked(evt);
+            }
+        });
+>>>>>>> Stashed changes
         jMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu8ActionPerformed(evt);
@@ -202,11 +211,16 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu8ActionPerformed
+
+    private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
+        // TODO add your handling code here:
         int respuesta = JOptionPane.showConfirmDialog(this, "Estás seguro que quieres salir?", "Cerrar Ventana", JOptionPane.YES_NO_OPTION);
         if (respuesta == JOptionPane.YES_OPTION) {
 
         this.dispose(); }
-    }//GEN-LAST:event_jMenu8ActionPerformed
+    }//GEN-LAST:event_jMenu8MouseClicked
 
     /**
      * @param args the command line arguments
