@@ -186,9 +186,9 @@ IncripcionData nota = new IncripcionData();
             for (Materia obtenerMateriasCursada : nota.obtenerMateriasCursadas(alum.getId_alumno())) {
                 
                 modelo.addRow(new Object []{obtenerMateriasCursada.getIdMateria(), obtenerMateriasCursada.getNombre(), in.getNota()});
-               
+                break;
             }
- 
+
             
         }
     }//GEN-LAST:event_cboAlumnosActionPerformed
@@ -220,6 +220,7 @@ IncripcionData nota = new IncripcionData();
                 if (notas != inscripcion.getNota()) {
 
                    nota.actualizarNota(alum.getId_alumno(), inscripcion.getMateria().getIdMateria(), notas);
+                   
                  } 
                         
               } else {
@@ -227,6 +228,7 @@ IncripcionData nota = new IncripcionData();
                  modelo.setValueAt(inscripcion.getNota(), contador, 2); 
                     }
                     contador++;
+                    
                 }
             }
         } catch (NumberFormatException e) {
