@@ -254,12 +254,12 @@ private void ArmarCabecera(){
     TNotas.setModel(modelo);
     TNotas.setDefaultEditor(Object.class, null);
 
-// Ahora, para permitir que ciertas celdas sean editables, puedes utilizar un TableCellEditor personalizado:
+
 JTextField txt = new JTextField();
 txt.setBorder(null);
 DefaultCellEditor editor = new DefaultCellEditor(txt); 
 
-// Luego, asigna el editor a las celdas que deseas que sean editables. Por ejemplo, si deseas que la segunda columna sea editable:
+
 TNotas.getColumnModel().getColumn(2).setCellEditor(editor);
     
 }
