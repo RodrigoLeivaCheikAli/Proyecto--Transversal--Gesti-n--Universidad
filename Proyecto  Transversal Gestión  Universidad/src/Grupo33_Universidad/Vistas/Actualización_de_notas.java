@@ -195,24 +195,23 @@ IncripcionData nota = new IncripcionData();
         // TODO add your handling code here:
         alum = (Alumno) cboAlumnos.getSelectedItem();
         try {
-            if (alum != null) {
-                List<Inscripcion> inscripciones = nota.obtenerInscripcionesPorAlumno(alum.getId_alumno());
+           if (alum != null) {
+             List<Inscripcion> inscripciones = nota.obtenerInscripcionesPorAlumno(alum.getId_alumno());
 
-                int contador = 0;
-                for (Inscripcion inscripcion : inscripciones) {
+             int contador = 0;
+             for (Inscripcion inscripcion : inscripciones) {
                     
-                    String notaStr = modelo.getValueAt(contador, 2).toString(); 
-                    double notas = Double.parseDouble(notaStr); 
-                    if (notas >= 0 && notas <= 10) { 
-                        if (notas != inscripcion.getNota()) {
+             String notaStr = modelo.getValueAt(contador, 2).toString(); 
+             double notas = Double.parseDouble(notaStr); 
+             if (notas >= 0 && notas <= 10) { 
+                if (notas != inscripcion.getNota()) {
 
-                            nota.actualizarNota(alum.getId_alumno(), inscripcion.getMateria().getIdMateria(), notas);
-                         } else {   
-                            JOptionPane.showMessageDialog(this,"No se modifico la nota");
-                        }
-} else {
-                        JOptionPane.showMessageDialog(this, "Error: La nota debe estar en el rango de 0 a 10");
-                        modelo.setValueAt(inscripcion.getNota(), contador, 2); 
+                   nota.actualizarNota(alum.getId_alumno(), inscripcion.getMateria().getIdMateria(), notas);
+                 } 
+                        
+              } else {
+                 JOptionPane.showMessageDialog(this, "Error: La nota debe estar en el rango de 0 a 10");
+                 modelo.setValueAt(inscripcion.getNota(), contador, 2); 
                     }
                     contador++;
                 }
