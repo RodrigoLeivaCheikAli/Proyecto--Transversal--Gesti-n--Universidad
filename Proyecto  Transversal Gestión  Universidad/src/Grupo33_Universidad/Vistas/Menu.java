@@ -24,7 +24,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu2 = new javax.swing.JMenu();
-        ImageIcon icono= new ImageIcon(getClass().getResource("/Recursos/ULP3.png"));
+        ImageIcon icono= new ImageIcon(getClass().getResource("/Recursos/ulpvirtual.jpg"));
         Image mili= icono.getImage();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
